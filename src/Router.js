@@ -14,7 +14,9 @@ import CreateGuitar from './components/Guitars/Create'
 import GuitarState from './context/Guitar/GuitarState'
 import UserState from './context/User/UserState'
 
+// import Public from './routes/Public'
 
+import EditGuitar from './components/Guitars/Single/Edit'
 
 // 2. FUNCIÓN
 const Router = () => {
@@ -33,11 +35,17 @@ const Router = () => {
 							{/* localhost:3000/iniciar-sesion */}
 							<Route path="iniciar-sesion" element={<Login />} />
 							{/* localhost:3000/guitarras */}
+							{/* <Route path="guitarras" element={<Public component={Guitars} />} /> */}
 							<Route path="guitarras" element={<Guitars />} />
+
 							{/* localhost:3000/guitarras/crear */}
 							<Route path="guitarras/crear" element={<CreateGuitar />} />
 							{/* localhost:3000/guitarras/:id */}
 							<Route path="guitarras/:id" element={<Single />} />
+
+							{/* localhost:3000/guitarras/:id/editar */}
+							<Route path="guitarras/:id/editar" element={<EditGuitar />} />
+
 						</Route>
 					</Routes>
 				</BrowserRouter>

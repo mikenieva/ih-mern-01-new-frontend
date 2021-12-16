@@ -58,7 +58,11 @@ const GuitarState = (props) => {
 
 	const getGuitar = async (guitarId) => {
 		
+		console.log(guitarId)
+
 		const res = await axiosClient.get(`guitars/readone/${guitarId}`)
+
+		console.log(res)
 
 		const selectedGuitar = res.data.data
 
@@ -67,6 +71,8 @@ const GuitarState = (props) => {
 			payload: selectedGuitar
 		})
 
+		return "Listo"
+
 	}
 
 	const createGuitar = async (form) => {
@@ -74,6 +80,19 @@ const GuitarState = (props) => {
 		const res = await axiosClient.post("guitars/create", form)
 
 		console.log(res)
+
+	}
+
+	const updateGuitar = async (form, idGuitar) => {
+
+		const res = await axiosClient.put(`guitars/edit/${idGuitar}`, form)
+
+		const updatedGuitar = res.data.data
+
+		dispatch({
+			type: "UPDATE_GUITAR",
+			payload: updatedGuitar
+		})
 
 	}
 
@@ -88,7 +107,8 @@ const GuitarState = (props) => {
 				changeText,
 				getGuitars,
 				getGuitar,
-				createGuitar
+				createGuitar,
+				updateGuitar
 			}}
 		>
 			{props.children}

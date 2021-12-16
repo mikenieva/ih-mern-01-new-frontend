@@ -57,6 +57,37 @@ const UserState = (props) => {
 
 	}
 
+	const verifyingToken = async () => {
+
+		const token = localStorage.getItem("token")
+
+		// ANEXAR TOKEN A LA SIGUIENTE PETICIÓN DE AXIOS
+		if(token) {
+			axiosClient.defaults.headers.common["x-auth-token"] = token
+		} else {
+			delete axiosClient.defaults.headers.common["x-auth-token"]
+		}
+
+		try {
+			
+			const res = await axiosClient.get("users/verifytoken")
+
+			console.log(res)
+
+			const userData = res.data.data
+
+			dispatch({
+				type: "GET_DATA_USER",
+				payload: userData
+			})
+
+		} catch (error) {
+			console.log(error)
+		}
+
+
+	}
+
 	// 4. RETORNO
 	return (
 		<UserContext.Provider
@@ -64,7 +95,8 @@ const UserState = (props) => {
 				currentUser: globalState.currentUser,
 				authStatus: globalState.authStatus,
 				registerUser,
-				loginUser
+				loginUser,
+				verifyingToken
 			}}
 		>
 
