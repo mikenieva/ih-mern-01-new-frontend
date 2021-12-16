@@ -38,31 +38,30 @@ export default function Edit() {
 			// 1. DESCARGAR LOS DATOS DE LA GUITARRA DE LA PÁGINA
 			await getGuitar(idGuitar)
 
-
-
+			const {
+				nombre,
+				precio,
+				color,
+				imagen,
+				descripcion
+			} = ctx.singleGuitar
+	
+			setGuitarData({
+				nombre: nombre,
+				precio: precio,
+				color: color,
+				imagen: imagen,
+				descripcion: descripcion
+			})
 		}
 
 		updateLocalState()
 
-	}, [])
+	}, [singleGuitar])
 
 	useEffect(() => {
 
-		const {
-			nombre,
-			precio,
-			color,
-			imagen,
-			descripcion
-		} = ctx.singleGuitar
-
-		setGuitarData({
-			nombre: nombre,
-			precio: precio,
-			color: color,
-			imagen: imagen,
-			descripcion: descripcion
-		})
+		
 	}, [singleGuitar])
 
 	const handleChange = (e) => {
