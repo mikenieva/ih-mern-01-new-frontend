@@ -39,7 +39,7 @@ export default function Header() {
 					</div>
 					<div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
 						{
-							currentUser?.nombre ?
+							currentUser.nombre ?
 
 								<Link to="/profile" className="text-base font-medium text-white hover:text-indigo-50">
 									Tu perfil

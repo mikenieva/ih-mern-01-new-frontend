@@ -37,8 +37,14 @@ const Router = () => {
 							{/* localhost:3000/ */}
 							<Route index element={<Home />} />
 
+							{/* 1. RUTAS DE AUTENTICACIÓN */}
+							{/* EVITAN QUE UN USUARIO LOGGEADO PUEDA ENTRAR A REGISTER.JS Y LOGIN.JS */}
+
 							{/* localhost:3000/registro */}
-							<Route path="registro" element={<Auth component={Register} />} />
+							<Route 
+								path="registro" 
+								element={<Auth component={Register} />} 
+							/>
 
 							{/* localhost:3000/iniciar-sesion */}
 							<Route path="iniciar-sesion" element={<Auth component={Login} />} />
