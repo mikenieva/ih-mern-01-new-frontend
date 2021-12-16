@@ -12,6 +12,7 @@ import Single from './components/Guitars/Single'
 import CreateGuitar from './components/Guitars/Create'
 
 import GuitarState from './context/Guitar/GuitarState'
+import UserState from './context/User/UserState'
 
 
 
@@ -20,6 +21,7 @@ const Router = () => {
 	
 	return (
 		<>
+		<UserState>
 			<GuitarState>
 				<BrowserRouter>
 					<Routes>
@@ -40,6 +42,7 @@ const Router = () => {
 					</Routes>
 				</BrowserRouter>
 			</GuitarState>
+		</UserState>
 		</>
 	)
 }
