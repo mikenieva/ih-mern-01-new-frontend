@@ -1,5 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react'
 
+import {Navigate} from 'react-router-dom'
+
 import UserContext from '../context/User/UserContext'
 
 
@@ -17,7 +19,14 @@ export default function PublicRoute({ component: Component, ...props }) {
     }, [authStatus])
 
     return (
-            (<Component />)
+		<>
+			{
+				authStatus ?
+				(<Navigate replace to="/" />)
+				:
+				(<Component/>)
+			}
+		</>
     )
     
 }

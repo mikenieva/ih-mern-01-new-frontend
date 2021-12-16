@@ -31,37 +31,31 @@ export default function Edit() {
 
 	// 3. FUNCIONES
 
-	useEffect(() => {
-		// a. FUNCIÓN DE ACTUALIZACIÓN
-		const updateLocalState = async () => {
-			
-			// 1. DESCARGAR LOS DATOS DE LA GUITARRA DE LA PÁGINA
-			await getGuitar(idGuitar)
-
-			const {
-				nombre,
-				precio,
-				color,
-				imagen,
-				descripcion
-			} = ctx.singleGuitar
-	
-			setGuitarData({
-				nombre: nombre,
-				precio: precio,
-				color: color,
-				imagen: imagen,
-				descripcion: descripcion
-			})
-		}
-
-		updateLocalState()
-
-	}, [singleGuitar])
-
+	// USEEFFECT PARA ACTUALIZAR DATOS EN EL ESTADO GLOBAL
 	useEffect(() => {
 
-		
+			getGuitar(idGuitar)
+
+	}, [])
+
+	// USEEFFECT PARA ACTUALIZAR LOS DATOS DEL ESTADO GLOBAL AL ESTADO LOCAL
+	useEffect(() => {
+
+		const {
+			nombre,
+			precio,
+			color,
+			imagen,
+			descripcion
+		} = ctx.singleGuitar
+
+		setGuitarData({
+			nombre: nombre,
+			precio: precio,
+			color: color,
+			imagen: imagen,
+			descripcion: descripcion
+		})
 	}, [singleGuitar])
 
 	const handleChange = (e) => {
